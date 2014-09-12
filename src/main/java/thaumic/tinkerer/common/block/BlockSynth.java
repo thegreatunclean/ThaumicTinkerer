@@ -245,7 +245,6 @@ public class BlockSynth extends BlockModContainer {
 			dropBlockAsItem(world, xc, yc, zc, 0, 0);
 			world.setBlockToAir(xc, yc, zc);
 		}
-		return;
 	}
 	@Override
 	public boolean shouldRegister() {
@@ -271,8 +270,6 @@ public class BlockSynth extends BlockModContainer {
 			'F', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFunnel.class)));
 	}
 	public IRegisterableResearch getResearchItem() {
-		return null;
-		/*
 		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SYNTH,
                                                       new AspectList().add(Aspect.TOOL,2).add(Aspect.CRAFT,1).add(Aspect.ORDER,1).add(Aspect.MAGIC,1),
                                                       1,-9,
@@ -282,7 +279,6 @@ public class BlockSynth extends BlockModContainer {
 													  .setPages(new ResearchPage("0"),
 																ResearchHelper.arcaneRecipePage(LibResearch.KEY_SYNTH),
 																new ResearchPage(LibResearch.KEY_ICHOR, "1")).setSecondary(); //hidden until ichor is done
-		*/
 	}
 
 }
