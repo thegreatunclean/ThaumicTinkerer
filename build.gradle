@@ -55,7 +55,7 @@ apply plugin: 'forge'
 
 
 group = "thaumic.tinkerer" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "ThaumicTinkerer"
+archivesBaseName = "ThaumicTinkererFF"
 
 minecraft {
     version = "1.7.10-10.13.0.1208"
