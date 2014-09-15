@@ -265,14 +265,14 @@ public class BlockSynth extends BlockModContainer {
 	}
 	@Override
 	public ThaumicTinkererRecipe getRecipeItem() {
-		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SYNTH, LibResearch.KEY_SYNTH, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY,1),
+		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SYNTH, LibResearch.KEY_SYNTH, new ItemStack(this), new AspectList().add(Aspect.ORDER, 8).add(Aspect.ENTROPY,8),
 			"DFD",
 			'D', new ItemStack(Items.diamond),
 			'F', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFunnel.class)));
 	}
 	public IRegisterableResearch getResearchItem() {
 		return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_SYNTH,
-                                                      new AspectList().add(Aspect.TOOL,2).add(Aspect.CRAFT,1).add(Aspect.ORDER,1).add(Aspect.MAGIC,1),
+                                                      new AspectList().add(Aspect.TOOL,8).add(Aspect.CRAFT,16).add(Aspect.MAGIC,2),
                                                       1,-9,
                                                       3,
                                                       new ItemStack(this))
