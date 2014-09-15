@@ -95,6 +95,8 @@ dependencies {
     compile "mantle:Mantle:1.7.10-0.3.1.jenkins167:deobf"
     compile("tconstruct:TConstruct:1.7.10-1.6.0.jenkins541:deobf") {
     }
+    
+    compile files('libs/TCDeobf.jar')
 }
 // some crazy stuff to make sure the chicken stuff is in the mods folder...
 // because it wont work otherwise...  because FML doesnt laod coremods from the classpath
