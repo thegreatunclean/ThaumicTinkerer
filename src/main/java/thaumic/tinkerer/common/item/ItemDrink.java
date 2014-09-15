@@ -53,7 +53,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         setMaxDamage(0);
     }
 
-
+    //TODO switch this to using item damage, not nbt.
     @SubscribeEvent
     public void onItemCraft(ItemCraftedEvent event) {
         ItemStack result = event.crafting;
@@ -65,9 +65,9 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
                 if (component != null && component.getItem() instanceof ItemEssence) {
                     AspectList aspects = getAspects(component);
                     if (aspects != null) {
-                        setAspects(result, aspects);
-                        event.setResult(Event.Result.ALLOW);
-                        return;
+                        NBTTagCompound tags = new NBTTagCompound();
+                        aspects.writeToNBT(tags);
+                        event.crafting.setTagCompound(tags);
                     }
                 }
             }
@@ -98,8 +98,16 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
             }
 
         }
+        ItemStack phial = ItemApi.getItem("itemEssence",0);
+        if (!player.inventory.addItemStackToInventory(phial)) {
+            player.dropPlayerItemWithRandomChoice(phial, false);
+        }
+        ItemStack bottle = new ItemStack(Items.glass_bottle);
+        if (!player.inventory.addItemStackToInventory(bottle)) {
+            player.dropPlayerItemWithRandomChoice(bottle, false);
+        }
 
-        return item.stackSize <= 0 ? new ItemStack(Items.glass_bottle) : item;
+        return item.stackSize <= 0 ? null : item;
     }
     @Override
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {

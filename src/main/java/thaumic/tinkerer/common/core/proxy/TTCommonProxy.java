@@ -44,7 +44,9 @@ import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
 import thaumic.tinkerer.common.item.ItemDrink;
 import thaumic.tinkerer.common.item.kami.wand.CapIchor;
+import thaumic.tinkerer.common.item.kami.wand.CapVichor;
 import thaumic.tinkerer.common.item.kami.wand.RodIchorcloth;
+import thaumic.tinkerer.common.item.kami.wand.RodVichorcloth;
 import thaumic.tinkerer.common.lib.LibMisc;
 import thaumic.tinkerer.common.network.GuiHandler;
 import thaumic.tinkerer.common.network.PlayerTracker;
@@ -69,11 +71,15 @@ public class TTCommonProxy {
         ThaumicTinkerer.registry.preInit();
         capIchor = new CapIchor();
         rodIchor = new RodIchorcloth();
+        capVichor = new CapVichor();
+        rodVichor = new RodVichorcloth();
         initCCPeripherals();
 	}
 
 	public WandCap capIchor;
+    public WandCap capVichor;
 	public WandRod rodIchor;
+    public WandRod rodVichor;
 	public Item.ToolMaterial toolMaterialIchor;
 
 	public void init(FMLInitializationEvent event) {
