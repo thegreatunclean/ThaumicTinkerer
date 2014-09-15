@@ -189,6 +189,8 @@ tile.remotePlacer.name=Remote Placer
 # KAMI BLOCK NAMES
 tile.warpGate.name=Celestial Gateway
 
+tile.synthesizer.name=Essentia Synth
+
 # ENCHANTMENT NAMES
 enchantment.ttinkerer:ascentBoost=Ascent Boost
 enchantment.ttinkerer:slowFall=Slow Fall
