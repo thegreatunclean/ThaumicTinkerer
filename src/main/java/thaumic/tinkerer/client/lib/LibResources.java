@@ -109,6 +109,6 @@ public final class LibResources {
 	public static final String ENCHANT_SHOCKWAVE = PREFIX_ENCHANTS + "shockwave.png";
 	public static final String ENCHANT_POUNCE = PREFIX_ENCHANTS + "pounce.png";
 
-    public static final String MODEL_CAP_VICHOR = "capVichor.png";
-    public static final String MODEL_ROD_VICHORCLOTH = "rodVichorcloth.png";
+    public static final String MODEL_CAP_VICHOR = PREFIX_MODEL + "capVichor.png";
+    public static final String MODEL_ROD_VICHORCLOTH = PREFIX_MODEL + "rodVichorcloth.png";
 }

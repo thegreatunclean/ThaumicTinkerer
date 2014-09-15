@@ -112,11 +112,11 @@ public class ItemKamiResource extends ItemKamiBase {
         research.setPages(new ResearchPage("0"), ResearchHelper.infusionPage(LibResearch.KEY_ICHORCLOTH_ROD));
 		researchItemMulti.addResearch(research);
 
-        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_VICHOR_CAP, new AspectList().add(Aspect.AIR,2), 11, 13, 5, new ItemStack(this,1,8)).setWarp(2).setConcealed().setParents(LibResearch.KEY_ICHOR_CAP).setParentsHidden("VOIDMETAL").setParentsHidden("BATHSALTS");
+        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_VICHOR_CAP, new AspectList().add(Aspect.AIR,2), 11, 13, 5, new ItemStack(this,1,8)).setWarp(2).setConcealed().setParents(LibResearch.KEY_ICHOR_CAP).setParentsHidden("CAP_void").setParentsHidden("BATHSALTS");
         research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_VICHOR_CAP));
         researchItemMulti.addResearch(research);
 
-        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_VICHOR_ROD, new AspectList().add(Aspect.AIR,2), 16, 0, 5, new ItemStack(this, 1, 9)).setWarp(2).setConcealed().setParents(LibResearch.KEY_ICHORCLOTH_ROD).setParentsHidden(LibResearch.KEY_VICHOR_CAP);
+        research = (TTResearchItem) new KamiResearchItem(LibResearch.KEY_VICHOR_ROD, new AspectList().add(Aspect.AIR,2), 16, 0, 5, new ItemStack(this, 1, 9)).setWarp(2).setConcealed().setParents(LibResearch.KEY_ICHORCLOTH_ROD).setParentsHidden("VOIDMETAL");
         research.setPages(new ResearchPage("0"), ResearchHelper.arcaneRecipePage(LibResearch.KEY_VICHOR_ROD));
         researchItemMulti.addResearch(research);
 
@@ -150,11 +150,12 @@ public class ItemKamiResource extends ItemKamiBase {
 						new ItemStack(this), new ItemStack(this, 1, 1), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(Items.ghast_tear), new ItemStack(ConfigItems.itemResource, 1, 14), new ItemStack(this, 1, 1)),
 
                 new ThaumicTinkererArcaneRecipe(LibResearch.KEY_VICHOR_CAP, LibResearch.KEY_VICHOR_CAP, new ItemStack(this, 1, 8), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
-                        "VC",
-                        'V', new ItemStack(ConfigItems.itemResource,1,16),
+                        "VSC",
+                        'V', new ItemStack(ConfigItems.itemWandCap,1,7),
+                        'S', new ItemStack(Items.slime_ball),
                         'C', new ItemStack(this,2,4)),
                 new ThaumicTinkererArcaneRecipe(LibResearch.KEY_VICHOR_ROD, LibResearch.KEY_VICHOR_ROD, new ItemStack(this,1,9), new AspectList().add(Aspect.FIRE, 100).add(Aspect.EARTH, 100).add(Aspect.WATER, 100).add(Aspect.AIR, 100).add(Aspect.ORDER, 100).add(Aspect.ENTROPY, 100),
-                        "VR",
+                        " VV", "VRV","VV ",
                         'V', new ItemStack(ConfigItems.itemResource,1,16),
                         'R', new ItemStack(this,1,5))
 		);

@@ -29,10 +29,6 @@ public class CapVichor extends WandCap {
 		super("VICHOR", 0.6F, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 8), 10);
 	}
 
-    public CapVichor(String s) {
-        super(s, 0.6F, new ItemStack(ThaumicTinkerer.registry.getFirstItemFromClass(ItemKamiResource.class), 1, 8), 10);
-    }
-
 	@Override
 	public ResourceLocation getTexture() {
 		return res;
