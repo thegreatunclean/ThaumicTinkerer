@@ -619,6 +619,12 @@ ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink itt
 ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds have several magical properties, most importantly they make several powerful potions.
 ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <BR> Fire infused potions trap your enemies in a sphere of fire. <BR> Air infused potions send your enemies up in the air. <BR> Water infused potions chill surrounding lava.
 
+# -- SYNTHESIZER
+ttresearch.name.SYNTHESIZER=Essentia Synthesizer
+ttresearch.lore.SYNTHESIZER=[Insert witty remark here]
+ttresearch.page.SYNTHESIZER.0=You've invented a device that allows you to combine essentia from jars into compound aspects!<BR>Place above a hopper and right-click with a pair of jars containing essentia.  If the combination is valid and the hopper is pointed at a jar able to receive it, aspects will flow at a (2:1) ratio.<BR><BR>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. <BR> Herp a derp.
+ttresearch.page.SYNTHESIZER.1=You've discovered a way to catalyse the reaction using ichor, raising the amount of essentia created.<BR>When a piece of ichor is placed in the hopper beneath the synthesizer the input/output ratio becomes (1:1).
+
 # -- WAILA
 ttwaila.nothing=Nothing
 ttwaila.currentTool=Current Tool: %s
