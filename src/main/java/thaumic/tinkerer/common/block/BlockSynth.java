@@ -14,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -266,7 +267,7 @@ public class BlockSynth extends BlockModContainer {
 	public ThaumicTinkererRecipe getRecipeItem() {
 		return new ThaumicTinkererArcaneRecipe(LibResearch.KEY_SYNTH, LibResearch.KEY_SYNTH, new ItemStack(this), new AspectList().add(Aspect.ORDER, 1).add(Aspect.ENTROPY,1),
 			"DFD",
-			'D', new ItemStack(Blocks.diamond_block),
+			'D', new ItemStack(Items.diamond),
 			'F', new ItemStack(ThaumicTinkerer.registry.getFirstBlockFromClass(BlockFunnel.class)));
 	}
 	public IRegisterableResearch getResearchItem() {
