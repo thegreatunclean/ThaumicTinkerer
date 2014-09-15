@@ -100,8 +100,9 @@ public class ItemGemLegs extends ItemIchorclothArmorAdv {
 	public void onDamageTaken(LivingHurtEvent event) {
 		if (event.entityLiving instanceof EntityPlayer) {
 			EntityPlayer player = (EntityPlayer) event.entityLiving;
-			if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && event.source.isFireDamage() && ThaumicTinkerer.proxy.armorStatus(player)) {
-				event.setCanceled(true);
+			if (player.getCurrentArmor(1) != null && player.getCurrentArmor(1).getItem() == this && (event.source.isFireDamage() || player.isBurning()) && ThaumicTinkerer.proxy.armorStatus(player)) {
+				player.extinguish();
+                event.setCanceled(true);
 				player.heal(event.ammount);
 			}
 		}
