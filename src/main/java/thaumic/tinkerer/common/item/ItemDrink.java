@@ -20,6 +20,7 @@ import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
+import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.Thaumcraft;
 import thaumcraft.common.lib.network.PacketHandler;
 import thaumcraft.common.lib.network.playerdata.PacketAspectPool;
@@ -55,31 +56,25 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
 
     @SubscribeEvent
     public void onItemCraft(ItemCraftedEvent event) {
-        ThaumicTinkerer.log.debug("top of onItemCraft");
         ItemStack result = event.crafting;
         IInventory matrix = event.craftMatrix;
 
         if (result != null && result.getItem() instanceof ItemDrink) {
-            ThaumicTinkerer.log.debug("\trecipe is for ItemDrink");
             for (int i = 0; i < matrix.getSizeInventory(); i++) {
                 ItemStack component = matrix.getStackInSlot(i);
                 if (component != null && component.getItem() instanceof ItemEssence) {
-                    ThaumicTinkerer.log.debug("\tfound ItemEssence");
                     AspectList aspects = getAspects(component);
                     if (aspects != null) {
-                        ThaumicTinkerer.log.debug("\tadding aspects, size: "+aspects.size());
                         setAspects(result, aspects);
                         event.setResult(Event.Result.ALLOW);
                         return;
                     }
-                    ThaumicTinkerer.log.debug("\tno aspects to add");
                 }
             }
         }
 
         event.setResult(Event.Result.DENY);
 
-        ThaumicTinkerer.log.debug("leaving onItemCraft");
     }
 
 
@@ -94,8 +89,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
             AspectList aspects = getAspects(item);
             if (aspects != null && aspects.size() > 0) {
                 //add points to player.
-                for (Aspect as : aspects.getAspects())
-                if (Thaumcraft.proxy.getPlayerKnowledge().hasDiscoveredAspect(player.getCommandSenderName(),as)) {
+                for (Aspect as : aspects.getAspects()) {
                     Thaumcraft.proxy.getPlayerKnowledge().addAspectPool(player.getCommandSenderName(), as, (short) aspects.getAmount(as));
                     ResearchManager.scheduleSave(player);
                     player.addChatMessage(new ChatComponentText("Added 8 points of " + as.getTag()));
@@ -168,9 +162,8 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
     }
     @Override
     public IRegisterableResearch getResearchItem() {
-        return null;
-
-        //return new TTResearchItem(LibResearch.KEY_DRINK, null, 2,-9,1, new ItemStack(this));
+        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
+                .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
     }
     @Override
     public boolean shouldRegister() { return true;}

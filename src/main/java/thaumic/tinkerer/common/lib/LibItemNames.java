@@ -85,4 +85,6 @@ public final class LibItemNames {
 	public static final String INFUSED_GRAIN = "infusedGrain";
 
 	public static final String INFUSED_SEEDS = "infusedSeeds";
+
+    public static final String DRINK = "drink";
 }

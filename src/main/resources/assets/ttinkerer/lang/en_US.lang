@@ -144,6 +144,8 @@ item.protoclay.name=Protoclay
 item.skyPearl.name=Celestial Pearl
 item.focusRecall.name=Wand Focus: Celestial Recall
 
+item.drink.name=Pan-Galactic Gargle Blaster
+
 # BLOCK NAMES
 tile.darkQuartz.name=Block of Smokey Quartz
 tile.darkQuartzChiseled.name=Chiseled Smokey Quartz Block
@@ -637,6 +639,11 @@ ttresearch.page.CAP_VICHOR.0=After sniffing quite a lot of bath salts, you had a
 ttresearch.name.ROD_VICHORCLOTH=Vichorium Adorned Ichorium Strapped Silverwood Wand Core
 ttresearch.lore.ROD_VICHORCLOTH=If it's stupid, but works, it ain't stupid.
 ttresearch.page.ROD_VICHORCLOTH.0=Are you fucking high?!  Mixing void metal and ichor, what were you thinking?<BR><BR>After careful thought the voices in your head have reassured you there is absolutely no way this unholy union can backfire.
+
+# -- DRINK
+ttresearch.name.DRINK=Bottle o' Aspect
+ttresearch.lore.DRINK=Purple Drank
+ttresearch.page.DRINK.0=Why didn't you think about this before?  Drinking essentia phials to get research aspects!  Requires transfering to a more suitable drinking vessel.
 
 # -- WAILA
 ttwaila.nothing=Nothing
