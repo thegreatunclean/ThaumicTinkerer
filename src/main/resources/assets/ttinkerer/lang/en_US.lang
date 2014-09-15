@@ -621,29 +621,29 @@ ttresearch.lore.FIRE_PERDITIO=Cleanup time
 ttresearch.page.FIRE_PERDITIO.0=This fire acts like an antidote of sorts. If your elemental fires have gotten out of your control, you can set loose this specially designed flame. It will rip the magic out of elemental fire, returning it to a mundane form.
 
 ttresearch.name.INFUSED_POTIONS=Infused Potions
-ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink itt
+ttresearch.lore.INFUSED_POTIONS=Whats this? I don't know . . .better drink it
 ttresearch.page.INFUSED_POTIONS.0=You are able to create a new form of plant by infusing mundane seeds with magical shards. These seeds have several magical properties, most importantly they make several powerful potions.
 ttresearch.page.INFUSED_POTIONS.1=Earth infused potions summons barriers between mobs that attack you. <BR> Fire infused potions trap your enemies in a sphere of fire. <BR> Air infused potions send your enemies up in the air. <BR> Water infused potions chill surrounding lava.
 
 # -- SYNTHESIZER
 ttresearch.name.SYNTHESIZER=Essentia Synthesizer
-ttresearch.lore.SYNTHESIZER=Take that, Azanor!
+ttresearch.lore.SYNTHESIZER=[GOON] Take that, Azanor!
 ttresearch.page.SYNTHESIZER.0=You've invented a device that allows you to combine essentia from jars into compound aspects!<BR>Place above a hopper and right-click with a pair of jars containing essentia.  If the combination is valid and the hopper is pointed at a jar able to receive it, aspects will flow at a (2:1) ratio.
-ttresearch.page.SYNTHESIZER.1=You've discovered a way to catalyse the reaction using ichor, raising the amount of essentia created.<BR>When a piece of ichor is placed in the hopper beneath the synthesizer the input/output ratio becomes (1:1).
+ttresearch.page.SYNTHESIZER.1=You've discovered a way to catalyze the reaction using ichor, increasing the amount of essentia created.<BR>When a piece of ichor is placed in the hopper beneath the synthesizer the input/output ratio becomes (1:1).
 
 #  -- VICHOR STUFF
 ttresearch.name.CAP_VICHOR=Vichorium Wand Caps
-ttresearch.lore.CAP_VICHOR=Best worse idea you've ever had.
-ttresearch.page.CAP_VICHOR.0=After sniffing quite a lot of bath salts, you had a brilliant idea: combine ichorium caps with void metal.  Nothing can possibly go wrong.
+ttresearch.lore.CAP_VICHOR=[GOON] Best worst idea you've ever had.
+ttresearch.page.CAP_VICHOR.0=After sniffing quite a lot of bath salts you've had a brilliant idea: you should go out and eat a dude's face off.<BR>No, wait, that doesn't sound right.<BR><BR>Combine ichorium caps with void metal!  Nothing can possibly go wrong.
 
 ttresearch.name.ROD_VICHORCLOTH=Vichorium Adorned Ichorium Strapped Silverwood Wand Core
-ttresearch.lore.ROD_VICHORCLOTH=If it's stupid, but works, it ain't stupid.
-ttresearch.page.ROD_VICHORCLOTH.0=Are you fucking high?!  Mixing void metal and ichor, what were you thinking?<BR><BR>After careful thought the voices in your head have reassured you there is absolutely no way this unholy union can backfire.
+ttresearch.lore.ROD_VICHORCLOTH=[GOON] If it's stupid, but works, it ain't stupid.
+ttresearch.page.ROD_VICHORCLOTH.0=Are you high?!  Mixing void metal and ichor, what were you thinking?<BR><BR>After careful thought the voices in your head have reassured you there is absolutely no way this unholy union can backfire.
 
 # -- DRINK
 ttresearch.name.DRINK=Bottle o' Aspect
-ttresearch.lore.DRINK=Purple Drank
-ttresearch.page.DRINK.0=Why didn't you think about this before?  Drinking essentia phials to get research aspects!  Requires transfering to a more suitable drinking vessel.
+ttresearch.lore.DRINK=[GOON] Purple Drank
+ttresearch.page.DRINK.0=Why didn't you think about this before?  Drinking essentia phials to get research aspects!  Requires transfering to a more suitable drinking vessel.<BR><BR>An SA Goon Special Request.
 
 # -- WAILA
 ttwaila.nothing=Nothing
