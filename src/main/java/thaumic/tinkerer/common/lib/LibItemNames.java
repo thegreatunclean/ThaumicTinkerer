@@ -76,7 +76,9 @@ public final class LibItemNames {
 			"ichorCap",
 			"ichorclothRod",
 			"netherShard",
-			"enderShard"
+			"enderShard",
+            "vichorCap",
+            "vichorclothRod"
 	};
 
 	public static final String INFUSED_POTION = "infusedPotion";

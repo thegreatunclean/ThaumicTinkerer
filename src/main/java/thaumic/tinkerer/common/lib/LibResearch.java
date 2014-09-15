@@ -122,4 +122,7 @@ public final class LibResearch {
 
     public static final String KEY_SYNTH = "SYNTHESIZER";
 
+    public static final String KEY_VICHOR_CAP = "CAP_VICHOR";
+    public static final String KEY_VICHOR_ROD = "ROD_VICHORCLOTH";
+
 }

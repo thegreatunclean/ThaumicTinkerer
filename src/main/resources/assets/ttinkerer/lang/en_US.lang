@@ -114,6 +114,8 @@ item.ichorium.name=Ichorium
 item.ichorNugget.name=Ichorium Nugget
 item.ichorCap.name=Ichorium Cap
 item.ichorclothRod.name=Ichorcloth Strapped Silverwood Wand Core
+item.vichorCap.name=Void-Hardened Ichorium Cap
+item.vichorclothRod.name=Vichorium Imbued Ichorcloth Strapped Silverwood Wand Core
 item.netherShard.name=Nether Shard
 item.enderShard.name=Ender Shard
 item.ichorclothHelm.name=Ichorcloth Cowl
@@ -206,6 +208,8 @@ enchantment.ttinkerer:valiance=Valiance
 # WAND COMPONENTS
 item.Wand.ICHOR.cap=Ichorium Adorned
 item.Wand.ICHORCLOTH.rod=Ichorcloth Strapped Silverwood
+item.Wand.VICHOR.cap=Void-Hardened
+item.Wand.VICHORCLOTH.rod=Vichorcloth Imbued Ichorcloth Strapped Silverwood
 
 # RESEARCH
 ttresearch.prefix=[TT] 
@@ -624,6 +628,15 @@ ttresearch.name.SYNTHESIZER=Essentia Synthesizer
 ttresearch.lore.SYNTHESIZER=Take that, Azanor!
 ttresearch.page.SYNTHESIZER.0=You've invented a device that allows you to combine essentia from jars into compound aspects!<BR>Place above a hopper and right-click with a pair of jars containing essentia.  If the combination is valid and the hopper is pointed at a jar able to receive it, aspects will flow at a (2:1) ratio.
 ttresearch.page.SYNTHESIZER.1=You've discovered a way to catalyse the reaction using ichor, raising the amount of essentia created.<BR>When a piece of ichor is placed in the hopper beneath the synthesizer the input/output ratio becomes (1:1).
+
+#  -- VICHOR STUFF
+ttresearch.name.CAP_VICHOR=Vichorium Wand Caps
+ttresearch.lore.CAP_VICHOR=Best worse idea you've ever had.
+ttresearch.page.CAP_VICHOR.0=After sniffing quite a lot of bath salts, you had a brilliant idea: combine ichorium caps with void metal.  Nothing can possibly go wrong.
+
+ttresearch.name.ROD_VICHORCLOTH=Vichorium Adorned Ichorium Strapped Silverwood Wand Core
+ttresearch.lore.ROD_VICHORCLOTH=If it's stupid, but works, it ain't stupid.
+ttresearch.page.ROD_VICHORCLOTH.0=Are you fucking high?!  Mixing void metal and ichor, what were you thinking?<BR><BR>After careful thought the voices in your head have reassured you there is absolutely no way this unholy union can backfire.
 
 # -- WAILA
 ttwaila.nothing=Nothing
