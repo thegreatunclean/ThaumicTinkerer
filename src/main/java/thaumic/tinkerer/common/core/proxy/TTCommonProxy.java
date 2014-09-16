@@ -39,6 +39,8 @@ import thaumic.tinkerer.common.core.handler.kami.DimensionalShardDropHandler;
 import thaumic.tinkerer.common.core.handler.kami.KamiArmorHandler;
 import thaumic.tinkerer.common.core.handler.kami.KamiDimensionHandler;
 import thaumic.tinkerer.common.core.handler.kami.SoulHeartHandler;
+import thaumic.tinkerer.common.core.helper.AspectCropLootManager;
+import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
@@ -61,11 +63,11 @@ import thaumic.tinkerer.common.research.ResearchHelper;
 
 public class TTCommonProxy {
 
-	public void preInit(FMLPreInitializationEvent event) {
-		toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
-		ModCreativeTab.INSTANCE = new ModCreativeTab();
-		ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
-		//ModItems.initItems();
+    public void preInit(FMLPreInitializationEvent event) {
+        toolMaterialIchor = EnumHelper.addToolMaterial("ICHOR", 4, -1, 10F, 5F, 25);
+        ModCreativeTab.INSTANCE = new ModCreativeTab();
+        ConfigHandler.loadConfig(event.getSuggestedConfigurationFile());
+        //ModItems.initItems();
 
         NumericAspectHelper.init();
         ThaumicTinkerer.registry.preInit();
@@ -74,73 +76,78 @@ public class TTCommonProxy {
         capVichor = new CapVichor();
         rodVichor = new RodVichorcloth();
         initCCPeripherals();
-	}
-
-	public WandCap capIchor;
-    public WandCap capVichor;
-	public WandRod rodIchor;
-    public WandRod rodVichor;
-	public Item.ToolMaterial toolMaterialIchor;
-
-	public void init(FMLInitializationEvent event) {
         registerVersionChecker();
-		ModEnchantments.initEnchantments();
-		EnchantmentManager.initEnchantmentData();
-		ModPotions.initPotions();
-		ThaumicTinkerer.registry.init();
-		NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
-		registerPackets();
-		FMLCommonHandler.instance().bus().register(new PlayerTracker());
-        FMLCommonHandler.instance().bus().register(new ItemDrink());
-
-		if (ConfigHandler.enableKami) {
-			MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
-			MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
-			MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
-		}
-
-		if (Loader.isModLoaded("OpenComputers")) {
-			initOpenCDrivers();
-		}
-
-		if (Loader.isModLoaded("ForgeMultipart")) {
-			try {
-				Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
-				clazz.newInstance();
-			} catch (Throwable e) {
-				e.printStackTrace();
-			}
-		}
-	}
-
-	protected void registerPackets() {
-		ThaumicTinkerer.netHandler.registerMessage(PacketSoulHearts.class, PacketSoulHearts.class, 142 + 0, Side.CLIENT);
-		ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 1, Side.CLIENT);
-		ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 2, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateButton.class, PacketWarpGateButton.class, 142 + 3, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateTeleport.class, PacketWarpGateTeleport.class, 142 + 4, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterAddEnchant.class, PacketEnchanterAddEnchant.class, 142 + 5, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class, PacketEnchanterStartWorking.class, 142 + 6, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class, PacketMobMagnetButton.class, 142 + 7, Side.SERVER);
-		ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
-        ThaumicTinkerer.netHandler.registerMessage(PacketPlacerButton.class, PacketPlacerButton.class, 142 + 9, Side.SERVER);
-	}
-
-    public void registerVersionChecker(){
-        NBTTagCompound compound = new NBTTagCompound();
-        compound.setString("curseProjectName", "75598-thaumic-tinkerer");
-        compound.setString("curseFilenameParser", "ThaumicTinkerer-[].jar");
-        compound.setString("modDisplayName", "Thaumic Tinkerer");
-        FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addUpdate", compound);
     }
 
-	public void postInit(FMLPostInitializationEvent event) {
-		ResearchHelper.initResearch();
-		ThaumicTinkerer.registry.postInit();
-	}
+    public WandCap capIchor;
+    public WandRod rodIchor;
+    public WandCap capVichor;
+    public WandRod rodVichor;
+    public Item.ToolMaterial toolMaterialIchor;
 
-	protected void initCCPeripherals() {
-		/*IPeripheralHandler handler = new PeripheralHandler();
+    public void init(FMLInitializationEvent event) {
+        ModEnchantments.initEnchantments();
+        EnchantmentManager.initEnchantmentData();
+        ModPotions.initPotions();
+        ThaumicTinkerer.registry.init();
+        NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
+        registerPackets();
+        FMLCommonHandler.instance().bus().register(new PlayerTracker());
+        FMLCommonHandler.instance().bus().register(new ItemDrink());
+        MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
+
+        if (ConfigHandler.enableKami) {
+            MinecraftForge.EVENT_BUS.register(new DimensionalShardDropHandler());
+            MinecraftForge.EVENT_BUS.register(new KamiDimensionHandler());
+            MinecraftForge.EVENT_BUS.register(new SoulHeartHandler());
+        }
+
+        if (Loader.isModLoaded("OpenComputers")) {
+            initOpenCDrivers();
+        }
+
+        if (Loader.isModLoaded("ForgeMultipart")) {
+            ThaumicTinkerer.log.trace("Attempting to load Multiparts");
+            try {
+                Class clazz = Class.forName("thaumic.tinkerer.common.multipart.MultipartHandler");
+                clazz.newInstance();
+            } catch (Throwable e) {
+                ThaumicTinkerer.log.error("Error registering multiparts", e);
+            }
+        } else {
+            ThaumicTinkerer.log.info("Skipping TC Multipart integration");
+        }
+    }
+
+    protected void registerPackets() {
+        ThaumicTinkerer.netHandler.registerMessage(PacketSoulHearts.class, PacketSoulHearts.class, 142 + 0, Side.CLIENT);
+        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 1, Side.CLIENT);
+        ThaumicTinkerer.netHandler.registerMessage(PacketToggleArmor.class, PacketToggleArmor.class, 142 + 2, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateButton.class, PacketWarpGateButton.class, 142 + 3, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketWarpGateTeleport.class, PacketWarpGateTeleport.class, 142 + 4, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterAddEnchant.class, PacketEnchanterAddEnchant.class, 142 + 5, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketEnchanterStartWorking.class, PacketEnchanterStartWorking.class, 142 + 6, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketMobMagnetButton.class, PacketMobMagnetButton.class, 142 + 7, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketTabletButton.class, PacketTabletButton.class, 142 + 8, Side.SERVER);
+        ThaumicTinkerer.netHandler.registerMessage(PacketPlacerButton.class, PacketPlacerButton.class, 142 + 9, Side.SERVER);
+    }
+
+    public void registerVersionChecker() {
+        NBTTagCompound compound = new NBTTagCompound();
+        compound.setString("curseProjectName", "75598-thaumic-tinkerer");
+        compound.setString("curseFilenameParser", "ThaumicTinkerer-2.5-1.7.10-[].jar");
+        compound.setString("modDisplayName", "Thaumic Tinkerer");
+        FMLInterModComms.sendRuntimeMessage(LibMisc.MOD_ID, "VersionChecker", "addCurseCheck", compound);
+    }
+
+    public void postInit(FMLPostInitializationEvent event) {
+        ResearchHelper.initResearch();
+        ThaumicTinkerer.registry.postInit();
+        AspectCropLootManager.populateLootMap();
+    }
+
+    protected void initCCPeripherals() {
+        /*IPeripheralHandler handler = new PeripheralHandler();
 
 		Class[] peripheralClasses = new Class[] {
 				TileAlembic.class, TileCentrifuge.class, TileCrucible.class, TileFunnel.class,
@@ -153,36 +160,36 @@ public class TTCommonProxy {
 			ComputerCraftAPI.registerExternalPeripheral(clazz, handler);
 			
 		TurtleAPI.registerUpgrade(new FumeTool());*/
-	}
+    }
 
-	@Optional.Method(modid = "OpenComputers")
-	public void initOpenCDrivers() {
-		Driver.add(new DriverIAspectContainer());
-		Driver.add(new DriverArcaneEar());
-		Driver.add(new DriverBrainInAJar());
-		Driver.add(new DriverDeconstructor());
-		Driver.add(new DriverEssentiaTransport());
-		Driver.add(new DriverArcaneBore());
+    @Optional.Method(modid = "OpenComputers")
+    public void initOpenCDrivers() {
+        Driver.add(new DriverIAspectContainer());
+        Driver.add(new DriverArcaneEar());
+        Driver.add(new DriverBrainInAJar());
+        Driver.add(new DriverDeconstructor());
+        Driver.add(new DriverEssentiaTransport());
+        Driver.add(new DriverArcaneBore());
 
-	}
+    }
 
-	public boolean isClient() {
-		return false;
-	}
+    public boolean isClient() {
+        return false;
+    }
 
-	public boolean armorStatus(EntityPlayer player) {
-		return KamiArmorHandler.getArmorStatus(player);
-	}
+    public boolean armorStatus(EntityPlayer player) {
+        return KamiArmorHandler.getArmorStatus(player);
+    }
 
-	public void setArmor(EntityPlayer player, boolean status) {
-		KamiArmorHandler.setArmorStatus(player, status);
-	}
+    public void setArmor(EntityPlayer player, boolean status) {
+        KamiArmorHandler.setArmorStatus(player, status);
+    }
 
-	public EntityPlayer getClientPlayer() {
-		return null;
-	}
+    public EntityPlayer getClientPlayer() {
+        return null;
+    }
 
-	public void shadowSparkle(World world, float x, float y, float z, int size) {
-		// NO-OP
-	}
+    public void shadowSparkle(World world, float x, float y, float z, int size) {
+        // NO-OP
+    }
 }

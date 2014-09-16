@@ -1,5 +1,6 @@
 package thaumic.tinkerer.common.item;
 
+import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -54,7 +55,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
     }
 
     //TODO switch this to using item damage, not nbt.
-    @SubscribeEvent
+    @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onItemCraft(ItemCraftedEvent event) {
         ItemStack result = event.crafting;
         IInventory matrix = event.craftMatrix;
@@ -92,6 +93,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
                 for (Aspect as : aspects.getAspects()) {
                     Thaumcraft.proxy.getPlayerKnowledge().addAspectPool(player.getCommandSenderName(), as, (short) aspects.getAmount(as));
                     ResearchManager.scheduleSave(player);
+                    //TODO figure out how to get the packet off so it does the nice TC aspect point animation
                     player.addChatMessage(new ChatComponentText("Added 8 points of " + as.getTag()));
                 }
 

@@ -3,19 +3,13 @@ package thaumic.tinkerer.common.compat;
 import codechicken.enderstorage.api.EnderStorageManager;
 import codechicken.enderstorage.storage.item.EnderItemStorage;
 import codechicken.enderstorage.storage.item.TileEnderChest;
-<<<<<<< HEAD
-=======
 import net.minecraft.block.Block;
->>>>>>> develop
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
-<<<<<<< HEAD
-=======
 import net.minecraft.tileentity.TileEntityEnderChest;
->>>>>>> develop
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import thaumcraft.common.items.wands.ItemWandCasting;
@@ -45,34 +39,20 @@ public class EnderStorageFunctions {
 				wand.setFocus(stack, focus);
 				return stack;
 			}
-<<<<<<< HEAD
 			if(world.getBlock(pos.blockX, pos.blockY, pos.blockZ)== Blocks.obsidian&& p.isSneaking())
 			{
 
 				focus.getTagCompound().setInteger("freq", -1);
 				focus.getTagCompound().setString("owner", p.getGameProfile().getName());
 				focus.getTagCompound().setBoolean("ender", false);
-=======
-            if (world.getBlock(pos.blockX, pos.blockY, pos.blockZ) == Blocks.obsidian && p.isSneaking()) {
-
-				focus.getTagCompound().setInteger("freq", -1);
-                focus.getTagCompound().setString("owner", p.getGameProfile().getName());
-                focus.getTagCompound().setBoolean("ender", false);
->>>>>>> develop
 				wand.setFocus(stack, focus);
 				return stack;
 			}
 		}
 		boolean vanilla=!focus.getTagCompound().getBoolean("ender");
-<<<<<<< HEAD
-		
-		if(wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true,false)) {
-			if(vanilla)
-=======
 
         if (wand.consumeAllVis(stack, p, ItemFocusEnderChest.visUsage, true, false)) {
             if(vanilla)
->>>>>>> develop
 			{
 				p.displayGUIChest(p.getInventoryEnderChest());
 				world.playSoundAtEntity(p, "mob.endermen.portal", 1F, 1F);
