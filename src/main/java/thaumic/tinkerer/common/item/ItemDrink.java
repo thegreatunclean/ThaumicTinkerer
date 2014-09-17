@@ -4,6 +4,8 @@ import cpw.mods.fml.common.eventhandler.EventPriority;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.eventhandler.Event;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
@@ -112,6 +114,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         return item.stackSize <= 0 ? null : item;
     }
     @Override
+    @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
         AspectList aspects = getAspects(par1ItemStack);
         if (aspects != null && aspects.size() > 0) {
@@ -121,11 +124,12 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         }
     }
     @Override
+    @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister ir) {
         this.icon = IconHelper.forItem(ir, this);
     }
     public boolean shouldDisplayInTab() {
-        return false;
+        return true;
     }
     public int getMaxItemUseDuration(ItemStack item) {
         return 32; //same duration as drinking milk
@@ -172,24 +176,18 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
     }
     @Override
     public IRegisterableResearch getResearchItem() {
-        return null;
-        /*
         return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
                 .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
 
-        */
     }
     @Override
-    public boolean shouldRegister() { return false;}
+    public boolean shouldRegister() { return true;}
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
-        return null;
-        /*
         return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DRINK, new ItemStack(this),
                 "BP",
                 'B', new ItemStack(Items.glass_bottle),
                 'P', ItemApi.getItem("itemEssence",1)  ) ;
-        */
     }
 }

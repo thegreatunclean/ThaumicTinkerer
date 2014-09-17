@@ -93,7 +93,7 @@ public class TTCommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
         registerPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
-        //FMLCommonHandler.instance().bus().register(new ItemDrink());
+        FMLCommonHandler.instance().bus().register(new ItemDrink());
         MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
 
         if (ConfigHandler.enableKami) {
