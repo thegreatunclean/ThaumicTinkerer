@@ -125,7 +125,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         this.icon = IconHelper.forItem(ir, this);
     }
     public boolean shouldDisplayInTab() {
-        return true;
+        return false;
     }
     public int getMaxItemUseDuration(ItemStack item) {
         return 32; //same duration as drinking milk
@@ -172,17 +172,24 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
     }
     @Override
     public IRegisterableResearch getResearchItem() {
+        return null;
+        /*
         return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
                 .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
+
+        */
     }
     @Override
-    public boolean shouldRegister() { return true;}
+    public boolean shouldRegister() { return false;}
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
+        return null;
+        /*
         return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DRINK, new ItemStack(this),
                 "BP",
                 'B', new ItemStack(Items.glass_bottle),
                 'P', ItemApi.getItem("itemEssence",1)  ) ;
+        */
     }
 }
