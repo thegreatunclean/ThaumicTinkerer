@@ -651,6 +651,14 @@ ttresearch.name.DRINK=Bottle o' Aspect
 ttresearch.lore.DRINK=[GOON] Purple Drank
 ttresearch.page.DRINK.0=Why didn't you think about this before?  Drinking essentia phials to get research aspects!  Requires transfering to a more suitable drinking vessel.<BR><BR>An SA Goon Special Request.
 
+
+# -- ELDRITCH REVELATION
+ttresearch.name.DICKBUTT=Eldritch Unveiling
+ttresearch.lore.DICKBUTT=[GOON] The Ultimate Knowledge
+ttresearch.page.DICKBUTT.0=You woke up from a trance and found something extraordinary.  You successfully decoded the eldritch revelation!<BR>You've never felt so proud of your work even though you don't exactly remember doing it.
+ttresearch.page.DICKBUTT.1=Where the inspiration comes from doesn't matter, all that matters are the results.  You've given so much for unimaginable power, and now all those sacrifices are about to pay off.<BR><BR>The information on the next page is the culmination of your life's work.  If you  have any doubts or fears that you aren't ready to lay eyes on your final masterwork, turn back now, for it is truly the work of the gods.
+ttresearch.page.DICKBUTT.2=<IMG>ttinkerer:textures/misc/eldritchunveiling.png:0:255:255:255:.5</IMG>
+
 # -- WAILA
 ttwaila.nothing=Nothing
 ttwaila.currentTool=Current Tool: %s

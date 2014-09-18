@@ -127,4 +127,6 @@ public final class LibResearch {
 
     public static final String KEY_DRINK = "DRINK";
 
+    public static final String KEY_DICKBUTT = "DICKBUTT";
+
 }

@@ -45,6 +45,10 @@ public class TTResearchItem extends ResearchItem implements IRegisterableResearc
 		super(par1, LibResearch.CATEGORY_THAUMICTINKERER, tags, par3, par4, par5, icon);
 		setPages(pages);
 	}
+    public TTResearchItem(String par1, String cat, AspectList tags, int par3, int par4, int par5, ResourceLocation loc, ResearchPage... pages) {
+        super(par1, cat, tags, par3, par4, par5, loc);
+        setPages(pages);
+    }
 
     public TTResearchItem setWarp(int warp) {
         this.warp = warp;

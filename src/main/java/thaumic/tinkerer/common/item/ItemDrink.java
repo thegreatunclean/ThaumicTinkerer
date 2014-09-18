@@ -14,6 +14,7 @@ import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.crafting.IRecipe;
@@ -32,6 +33,7 @@ import thaumcraft.common.config.ConfigItems;
 import thaumcraft.common.items.ItemEssence;
 import thaumic.tinkerer.client.core.helper.IconHelper;
 import thaumic.tinkerer.common.ThaumicTinkerer;
+import thaumic.tinkerer.common.core.handler.ConfigHandler;
 import thaumic.tinkerer.common.lib.LibBlockNames;
 import thaumic.tinkerer.common.lib.LibItemNames;
 import thaumic.tinkerer.common.lib.LibResearch;
@@ -39,6 +41,7 @@ import thaumic.tinkerer.common.registry.*;
 import thaumic.tinkerer.common.research.IRegisterableResearch;
 import thaumic.tinkerer.common.research.ResearchHelper;
 import thaumic.tinkerer.common.research.TTResearchItem;
+import thaumic.tinkerer.common.research.TTResearchItemMulti;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -176,8 +179,23 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
     }
     @Override
     public IRegisterableResearch getResearchItem() {
-        return (IRegisterableResearch) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
+        TTResearchItem research;
+        TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
+
+        research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
                 .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
+        researchItemMulti.addResearch(research);
+
+        if (ConfigHandler.eldritchUnveiling) {
+            research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DICKBUTT, "ELDRITCH", new AspectList().add(Aspect.MAGIC, 50), -4, 0, 0, new ResourceLocation("ttinkerer", "textures/misc/eunveil.png"))
+                    .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"))
+                    .setParents("ELDRITCHMAJOR")
+                    .setRound().setSpecial();
+            researchItemMulti.addResearch(research);
+        }
+
+
+        return researchItemMulti;
 
     }
     @Override

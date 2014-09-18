@@ -56,6 +56,8 @@ public final class ConfigHandler {
 
     public static boolean cropsAllowBonemeal = true;
 
+    public static boolean eldritchUnveiling = true;
+
     public static void loadConfig(File configFile) {
         config = new Configuration(configFile);
 
@@ -115,6 +117,10 @@ public final class ConfigHandler {
         Property propCropsAllowBonemeal = config.get(Configuration.CATEGORY_GENERAL, "cropsAllowBonemeal.enabled", false);
         propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
         cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
+
+        Property propEldritchUnveiling = config.get(Configuration.CATEGORY_GENERAL, "eldritchUnveiling.enabled", true);
+        propEldritchUnveiling.comment = "[GOON]-specific.  Enable the Eldritch Unveiling research node.";
+        eldritchUnveiling = propEldritchUnveiling.getBoolean(false);
 
 
         if (enableKami) {
