@@ -120,7 +120,7 @@ public final class ConfigHandler {
 
         Property propEldritchUnveiling = config.get(Configuration.CATEGORY_GENERAL, "eldritchUnveiling.enabled", true);
         propEldritchUnveiling.comment = "[GOON]-specific.  Enable the Eldritch Unveiling research node.";
-        eldritchUnveiling = propEldritchUnveiling.getBoolean(false);
+        eldritchUnveiling = propEldritchUnveiling.getBoolean(true);
 
 
         if (enableKami) {
