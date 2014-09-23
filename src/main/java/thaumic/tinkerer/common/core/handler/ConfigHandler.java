@@ -118,11 +118,6 @@ public final class ConfigHandler {
         propCropsAllowBonemeal.comment = "Allows crops to be grown using bonemeal. Useful for debug purposes.";
         cropsAllowBonemeal = propCropsAllowBonemeal.getBoolean(false);
 
-        Property propEldritchUnveiling = config.get(Configuration.CATEGORY_GENERAL, "eldritchUnveiling.enabled", true);
-        propEldritchUnveiling.comment = "[GOON]-specific.  Enable the Eldritch Unveiling research node.";
-        eldritchUnveiling = propEldritchUnveiling.getBoolean(true);
-
-
         if (enableKami) {
             Property propDimensionID = config.get(CATEGORY_KAMI_GENERAL, "Bedrock dimension id", -19);
             propDimensionID.comment = "Set to the dimension id wished for bedrock dimension, or 0 to disable";

@@ -44,7 +44,6 @@ import thaumic.tinkerer.common.core.helper.BonemealEventHandler;
 import thaumic.tinkerer.common.core.helper.NumericAspectHelper;
 import thaumic.tinkerer.common.enchantment.ModEnchantments;
 import thaumic.tinkerer.common.enchantment.core.EnchantmentManager;
-import thaumic.tinkerer.common.item.ItemDrink;
 import thaumic.tinkerer.common.item.kami.wand.CapIchor;
 import thaumic.tinkerer.common.item.kami.wand.CapVichor;
 import thaumic.tinkerer.common.item.kami.wand.RodIchorcloth;
@@ -93,7 +92,6 @@ public class TTCommonProxy {
         NetworkRegistry.INSTANCE.registerGuiHandler(ThaumicTinkerer.instance, new GuiHandler());
         registerPackets();
         FMLCommonHandler.instance().bus().register(new PlayerTracker());
-        FMLCommonHandler.instance().bus().register(new ItemDrink());
         MinecraftForge.EVENT_BUS.register(new BonemealEventHandler());
 
         if (ConfigHandler.enableKami) {
