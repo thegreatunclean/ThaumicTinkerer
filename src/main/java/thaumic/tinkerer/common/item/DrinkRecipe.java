@@ -49,13 +49,10 @@ public class DrinkRecipe implements IRecipe {
                 if (stack.getItem() == ItemApi.getItem("itemEssence", 1).getItem()) {
                     phialCount++;
                 } else {
-                    System.out.println("[matches] invalid item detected");
-                    System.out.println("\t"+stack.getItem().getClass().getName());
                     return false; // Found an invalid item, breaking the recipe
                 }
 			}
 		}
-        System.out.println("[matches] gC: " + glassCount + " pC: " + phialCount);
 		if (glassCount != 1 || phialCount != 1) { return false; } //Invalid recipe
 
         output = new ItemStack( ThaumicTinkerer.registry.getFirstItemFromClass(ItemDrink.class));
@@ -67,7 +64,6 @@ public class DrinkRecipe implements IRecipe {
                 if (aspects != null) {
                     aspects.writeToNBT(tags);
                     output.setTagCompound(tags);
-                    System.out.println("\tadding: "+aspects.getAspects()[0].getTag());
                     return true;
                 }
 
