@@ -197,13 +197,11 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
                 .setPages(new ResearchPage("0"), new ResearchPage(dummyRecipe));
         researchItemMulti.addResearch(research);
 
-        if (ConfigHandler.eldritchUnveiling) {
-            research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DICKBUTT, "ELDRITCH", new AspectList().add(Aspect.MAGIC, 50), -3, 0, 0, new ResourceLocation("ttinkerer", "textures/misc/eunveil.png"))
-                    .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"))
-                    .setParents("ELDRITCHMAJOR")
-                    .setSpecial().setConcealed();
-            researchItemMulti.addResearch(research);
-        }
+        research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DICKBUTT, "ELDRITCH", new AspectList().add(Aspect.MAGIC, 50), -3, 0, 0, new ResourceLocation("ttinkerer", "textures/misc/eunveil.png"))
+                .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"))
+                .setParents("ELDRITCHMAJOR")
+                .setSpecial().setConcealed();
+        researchItemMulti.addResearch(research);
 
 
         return researchItemMulti;
