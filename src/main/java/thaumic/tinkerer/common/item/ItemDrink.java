@@ -182,7 +182,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         TTResearchItem research;
         TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
 
-        research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DRINK, null, -2,0,1, new ItemStack(this)).setAutoUnlock().setRound()
+        research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DRINK, new AspectList(), -2,0,1, new ItemStack(this)).setStub().setAutoUnlock().setRound()
                 .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
         researchItemMulti.addResearch(research);
 
@@ -190,7 +190,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
             research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DICKBUTT, "ELDRITCH", new AspectList().add(Aspect.MAGIC, 50), -3, 0, 0, new ResourceLocation("ttinkerer", "textures/misc/eunveil.png"))
                     .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"))
                     .setParents("ELDRITCHMAJOR")
-                    .setRound().setSpecial();
+                    .setRound().setSpecial().setConcealed();
             researchItemMulti.addResearch(research);
         }
 
