@@ -11,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.*;
+import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
@@ -23,6 +24,7 @@ import thaumcraft.api.ItemApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectList;
 import thaumcraft.api.aspects.IEssentiaContainerItem;
+import thaumcraft.api.crafting.IArcaneRecipe;
 import thaumcraft.api.crafting.ShapedArcaneRecipe;
 import thaumcraft.api.research.ResearchPage;
 import thaumcraft.common.Thaumcraft;
@@ -57,8 +59,10 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         setMaxStackSize(64);
         setHasSubtypes(true);
         setMaxDamage(0);
+        CraftingManager.getInstance().getRecipeList().add(new DrinkRecipe(this));
     }
 
+    /*
     //TODO switch this to using item damage, not nbt.
     @SubscribeEvent(priority = EventPriority.LOWEST)
     public void onItemCraft(ItemCraftedEvent event) {
@@ -82,6 +86,7 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         event.setResult(Event.Result.DENY);
 
     }
+    */
 
 
 
@@ -182,15 +187,21 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
         TTResearchItem research;
         TTResearchItemMulti researchItemMulti = new TTResearchItemMulti();
 
+        //Dummy recipe to display, not actually used for crafting.  That's handled by DrinkRecipe
+        IArcaneRecipe dummyRecipe = new ShapedArcaneRecipe(LibResearch.KEY_DRINK, new ItemStack(this), new AspectList(), new Object[] {
+                "BP",
+                'B', new ItemStack(Items.glass_bottle),
+                'P', ItemApi.getItem("itemEssence", 1)});
+
         research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DRINK, new AspectList(), -2,0,1, new ItemStack(this)).setStub().setAutoUnlock().setRound()
-                .setPages(new ResearchPage("0"), ResearchHelper.recipePage(LibResearch.KEY_DRINK));
+                .setPages(new ResearchPage("0"), new ResearchPage(dummyRecipe));
         researchItemMulti.addResearch(research);
 
         if (ConfigHandler.eldritchUnveiling) {
             research = (TTResearchItem) new TTResearchItem(LibResearch.KEY_DICKBUTT, "ELDRITCH", new AspectList().add(Aspect.MAGIC, 50), -3, 0, 0, new ResourceLocation("ttinkerer", "textures/misc/eunveil.png"))
                     .setPages(new ResearchPage("0"), new ResearchPage("1"), new ResearchPage("2"))
                     .setParents("ELDRITCHMAJOR")
-                    .setRound().setSpecial().setConcealed();
+                    .setSpecial().setConcealed();
             researchItemMulti.addResearch(research);
         }
 
@@ -203,9 +214,6 @@ public class ItemDrink extends ItemBucketMilk implements ITTinkererItem {
 
     @Override
     public ThaumicTinkererRecipe getRecipeItem() {
-        return new ThaumicTinkererCraftingBenchRecipe(LibResearch.KEY_DRINK, new ItemStack(this),
-                "BP",
-                'B', new ItemStack(Items.glass_bottle),
-                'P', ItemApi.getItem("itemEssence",1)  ) ;
+        return null;
     }
 }
